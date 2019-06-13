@@ -1,5 +1,7 @@
 import React from 'react';
 
+//Componente em formato de função
+
 function App() {
   return (
     <div className="App">
