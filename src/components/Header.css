@@ -7,7 +7,7 @@ header#main-header {
 header#main-header .header-content {
     
     width: 100%; /* Se a largura tiver < 980px, usa 100% da largura */
-    max-width: 980px; /* Se a largura for > 980px, deixa fixo em 980px */
+    max-width: 980px; /* Se a largura for > 980px, deixa fixa em 980px */
     margin: 0 auto; /* Centraliza o conteúdo */
     
     height: 72px;

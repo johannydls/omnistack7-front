@@ -23,7 +23,7 @@ class Feed extends Component {
                     </header>
 
                     <img src="http://localhost:3333/files/profile_500.jpg" />
-
+                    
                     <footer>
                         <div className="actions">
                             <img src={like} alt="Like" />
