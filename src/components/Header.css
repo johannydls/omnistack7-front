@@ -1,0 +1,19 @@
+header#main-header {
+    background: #fff;
+    height: 72px;
+    border-bottom: 1px solid #DDD;
+}
+
+header#main-header .header-content {
+    
+    width: 100%; /* Se a largura tiver < 980px, usa 100% da largura */
+    max-width: 980px; /* Se a largura for > 980px, deixa fixo em 980px */
+    margin: 0 auto; /* Centraliza o conteúdo */
+    
+    height: 72px;
+    padding: 0 30px;
+
+    display: flex;
+    align-items: center; /* Alinha os itens verticalmente no centro */
+    justify-content: space-between; /* Um item totalmente à direita e outro à esquerda */
+}
