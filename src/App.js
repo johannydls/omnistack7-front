@@ -1,12 +1,18 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
+
+import Routes from './routes';
 
 //Componente em formato de função
 
+//O componente Routes renderiza as páginas dentro da tag <Routes />
+
 function App() {
   return (
-    <div className="App">
-      <h1>Hello World</h1>
-    </div>
+    <BrowserRouter>
+      {/* <Header /> */}
+      <Routes />
+    </BrowserRouter>
   );
 }
 
