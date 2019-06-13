@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import api from '../services/api';
+
 import './Feed.css';
 
 import more from '../assets/more.svg';
@@ -10,63 +12,50 @@ import send from '../assets/send.svg';
 //Componente em formato de classe
 
 class Feed extends Component {
+
+    state = {
+        feed: [],
+    }
+
+    //Chamada da API através do componentDidMount
+    async componentDidMount() {
+        //Faz um get em http://localhost:3333/posts
+        const response = await api.get('posts');
+
+        this.setState({ feed: response.data });
+    }
+
     render() {
         return (
             <section id="post-list">
-                <article>
-                    <header>
-                        <div className="user-info">
-                            <span>Johanny LS</span>
-                            <span className="place">Campina Grande</span>
-                        </div>
-                        <img src={more} alt="Mais" />
-                    </header>
+                { this.state.feed.map(post => (
+                    <article>
+                        <header>
+                            <div className="user-info">
+                                <span>{post.author}</span>
+                                <span className="place">{post.place}</span>
+                            </div>
+                            <img src={more} alt="Mais" />
+                        </header>
 
-                    <img src="http://localhost:3333/files/profile_500.jpg" />
-                    
-                    <footer>
-                        <div className="actions">
-                            <img src={like} alt="Like" />
-                            <img src={comment} alt="Comment" />
-                            <img src={send} alt="Send" />
-                        </div>
+                        <img src={`http://localhost:3333/files/${post.image}`} />
 
-                        <strong>900 curtidas</strong>
+                        <footer>
+                            <div className="actions">
+                                <img src={like} alt="Like" />
+                                <img src={comment} alt="Comment" />
+                                <img src={send} alt="Send" />
+                            </div>
 
-                        <p>
-                            Uma foto legal
-                            <span>#casamento #diziaejohanny</span>
-                        </p>
-                    </footer>
-                </article>
+                            <strong>{post.likes} curtidas</strong>
 
-                <article>
-                    <header>
-                        <div className="user-info">
-                            <span>Johanny LS</span>
-                            <span className="place">Campina Grande</span>
-                        </div>
-                        <img src={more} alt="Mais" />
-                    </header>
-
-                    <img src="http://localhost:3333/files/profile_500.jpg" />
-
-                    <footer>
-                        <div className="actions">
-                            <img src={like} alt="Like" />
-                            <img src={comment} alt="Comment" />
-                            <img src={send} alt="Send" />
-                        </div>
-
-                        <strong>900 curtidas</strong>
-
-                        <p>
-                            Uma foto legal
-                            <span>#casamento #diziaejohanny</span>
-                        </p>
-                    </footer>
-                </article>
-
+                            <p>
+                                {post.description}
+                                <span>{post.hashtags}</span>
+                            </p>
+                        </footer>
+                    </article>
+                )) }
             </section>
         );
     }
