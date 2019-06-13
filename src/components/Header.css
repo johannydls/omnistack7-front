@@ -11,7 +11,7 @@ header#main-header .header-content {
     margin: 0 auto; /* Centraliza o conteúdo */
     
     height: 72px;
-    padding: 0 30px;
+    padding: 0 30px; /* Distanciar os icones das bordas quando a largura tiver em 100% */
 
     display: flex;
     align-items: center; /* Alinha os itens verticalmente no centro */
