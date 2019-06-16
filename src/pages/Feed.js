@@ -25,6 +25,13 @@ class Feed extends Component {
         this.setState({ feed: response.data });
     }
 
+    //Nos casos que precisa ser passado parametro em funcoes no onSubmit,
+    //Usa-se um arrowfunction, passando a funcao de fato a ser executada com o parametro
+    handleLike = id => {
+        api.post(`posts/${id}/like`);
+    }
+
+
     render() {
         return (
             <section id="post-list">
@@ -42,7 +49,10 @@ class Feed extends Component {
 
                         <footer>
                             <div className="actions">
-                                <img className="actions-btn" src={like} alt="Like" />
+                                <button type="button" onClick={() => this.handleLike(post._id)}>
+                                    <img className="actions-btn" src={like} alt="Like" />
+                                </button>
+                                
                                 <img className="actions-btn" src={comment} alt="Comment" />
                                 <img className="actions-btn" src={send} alt="Send" />
                             </div>
