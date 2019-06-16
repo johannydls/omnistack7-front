@@ -35,16 +35,16 @@ class Feed extends Component {
                                 <span>{post.author}</span>
                                 <span className="place">{post.place}</span>
                             </div>
-                            <img src={more} alt="Mais" />
+                            <img className="actions-btn" src={more} alt="Mais" />
                         </header>
 
-                        <img src={`http://localhost:3333/files/${post.image}`} />
+                        <img src={`http://localhost:3333/files/${post.image}`} alt={`${post.place}`}/>
 
                         <footer>
                             <div className="actions">
-                                <img src={like} alt="Like" />
-                                <img src={comment} alt="Comment" />
-                                <img src={send} alt="Send" />
+                                <img className="actions-btn" src={like} alt="Like" />
+                                <img className="actions-btn" src={comment} alt="Comment" />
+                                <img className="actions-btn" src={send} alt="Send" />
                             </div>
 
                             <strong>{post.likes} curtidas</strong>

@@ -39,6 +39,10 @@ section#post-list article > img {
     width: 100%;
 }
 
+section#post-list .actions-btn {
+    cursor: pointer;
+}
+
 
 /* Estilização do footer */
 
