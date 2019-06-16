@@ -47,13 +47,16 @@ class Feed extends Component {
         socket.on('like', likedPost => {
             this.setState({
                 feed: this.state.feed.map(post => {
+                    //Percorre todo array de feed.
+                    //Se o post alterado com like for igual ao
+                    //post que esta sendo verificado, retorna o novo post com o like,
+                    //senao, retorna o post ja existente
                     return post._id === likedPost._id ? likedPost : post;
                 })
             })
         });
 
     }
-
 
     render() {
         return (
