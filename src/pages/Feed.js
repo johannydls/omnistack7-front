@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import io from 'socket.io-client';
 
 import api from '../services/api';
 
@@ -19,6 +20,9 @@ class Feed extends Component {
 
     //Chamada da API através do componentDidMount
     async componentDidMount() {
+
+        this.registerToSocket();
+
         //Faz um get em http://localhost:3333/posts
         const response = await api.get('posts');
 
@@ -29,6 +33,17 @@ class Feed extends Component {
     //Usa-se um arrowfunction, passando a funcao de fato a ser executada com o parametro
     handleLike = id => {
         api.post(`posts/${id}/like`);
+    }
+
+    registerToSocket = () => {
+        // Precisa passar o endereço da API como parametro do io
+        const socket = io('http://localhost:3333');
+
+        // Mensagens enviadas pelo back: post e like
+        socket.on('post', newPost => {
+            this.setState({ feed: [newPost, ...this.state.feed] });
+        });
+
     }
 
 
